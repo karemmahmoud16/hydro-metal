@@ -1,0 +1,504 @@
+:host {
+    display: block;
+}
+
+.main-footer {
+    position: relative;
+    /* Top margin opens space for the overlapping newsletter box. Using calc and arbitrary pixels so it scales nicely. */
+    margin-top: 150px;
+
+    @media (max-width: 900px) {
+        margin-top: 180px;
+        /* More space above on mobile to avoid hitting content before it */
+    }
+
+    /* Light mode default */
+    background-color: #f7f3ed;
+    color: var(--text-primary, #333);
+    transition: background-color 0.3s ease,
+    color 0.3s ease;
+    font-family: var(--font-body);
+
+    /* Dark mode */
+    :host-context([data-theme="dark"]) & {
+        background-color: #111;
+        /* optional background image if you want an industrial overlay */
+        background-image: linear-gradient(rgba(17, 17, 17, 0.93), rgba(17, 17, 17, 0.96)), url('/images/about.png');
+        background-size: cover;
+        background-position: center;
+        background-blend-mode: overlay;
+        color: #e5e7eb;
+    }
+}
+
+.container {
+    max-width: 1550px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+/* --- Newsletter Box (Overlapping) --- */
+.newsletter-wrapper {
+    position: absolute;
+    top: -80px;
+    left: 0;
+    width: 100%;
+    z-index: 10;
+    padding: 0 20px;
+
+    @media (max-width: 900px) {
+        top: -120px;
+        /* Push it further up on mobile so it doesn't bleed downwards heavily */
+    }
+}
+
+.newsletter-box {
+    background-color: var(--brand-gold-primary);
+    border-radius: 12px;
+    padding: 40px;
+    color: #fff;
+    box-shadow: 0 10px 40px rgba(189, 145, 80, 0.2);
+    position: relative;
+    overflow: hidden;
+
+    @media (max-width: 600px) {
+        padding: 30px 20px;
+        /* Reduce padding on mobile */
+    }
+
+    /* Subtle background pattern */
+    &::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        opacity: 0.15;
+        background-image: radial-gradient(circle at 80% 20%, #fff 2px, transparent 2px),
+            radial-gradient(circle at 10% 80%, #fff 2px, transparent 2px);
+        background-size: 50px 50px;
+        pointer-events: none;
+    }
+}
+
+.newsletter-content {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 60px;
+    position: relative;
+    z-index: 2;
+
+    @media (max-width: 900px) {
+        flex-direction: column;
+        text-align: center;
+        gap: 25px;
+    }
+}
+
+.newsletter-img {
+    width: 120px;
+    height: 120px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+
+    @media (max-width: 600px) {
+        width: 80px;
+        height: 80px;
+    }
+
+    .mailbox-icon {
+        width: 90px;
+        height: 90px;
+        animation: float 4s ease-in-out infinite;
+
+        @media (max-width: 600px) {
+            width: 70px;
+            height: 70px;
+        }
+    }
+}
+
+@keyframes float {
+    0% {
+        transform: translateY(0px) rotate(0deg);
+    }
+
+    50% {
+        transform: translateY(-12px) rotate(2deg);
+    }
+
+    100% {
+        transform: translateY(0px) rotate(0deg);
+    }
+}
+
+.newsletter-form-container {
+    flex: 1;
+    max-width: 650px;
+
+    h2 {
+        font-family: var(--font-heading);
+        font-size: 2.2rem;
+        font-weight: 800;
+        margin: 0 0 20px;
+
+        @media (max-width: 600px) {
+            font-size: 1.6rem;
+        }
+    }
+}
+
+.subscribe-form {
+    display: flex;
+    background: #fff;
+    border-radius: 50px;
+    padding: 8px;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+
+    @media (max-width: 600px) {
+        flex-direction: column;
+        border-radius: 12px;
+        padding: 12px;
+        gap: 10px;
+    }
+
+    input {
+        flex: 1;
+        border: none;
+        background: transparent;
+        padding: 15px 25px;
+        font-size: 1.05rem;
+        color: #333;
+        outline: none;
+        font-family: var(--font-body);
+
+        &::placeholder {
+            color: #a0aec0;
+        }
+    }
+
+    button {
+        background-color: var(--bg-surface, #222);
+        /* In light mode button is dark, in dark mode it stays dark or matching */
+        color: #fff;
+        border: none;
+        border-radius: 50px;
+        padding: 15px 35px;
+        font-weight: 700;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        transition: background-color 0.3s ease, transform 0.2s ease;
+        font-family: var(--font-heading);
+        font-size: 1rem;
+
+        :host-context([data-theme="dark"]) & {
+            background-color: #111;
+        }
+
+        @media (max-width: 600px) {
+            border-radius: 8px;
+            justify-content: center;
+        }
+
+        &:hover {
+            background-color: var(--brand-gold-primary);
+            transform: scale(1.02);
+        }
+
+        .dir-icon {
+            display: flex;
+        }
+    }
+}
+
+/* --- Main Footer Grid --- */
+.footer-middle {
+    /* give enough space for absolute top box */
+    padding: 160px 0 70px;
+
+    @media (max-width: 900px) {
+        padding-top: 320px;
+        /* Ensure there's enough space below the tall newsletter box */
+    }
+}
+
+.footer-grid {
+    display: grid;
+    grid-template-columns: 1.6fr 2fr 1.5fr 1fr;
+    gap: 40px;
+
+    @media (max-width: 1200px) {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 50px;
+    }
+
+    @media (max-width: 768px) {
+        grid-template-columns: 1fr;
+        gap: 40px;
+    }
+}
+
+.footer-col {
+    .footer-title {
+        font-family: var(--font-heading);
+        font-size: 1.35rem;
+        font-weight: 800;
+        margin-bottom: 25px;
+        color: var(--text-primary);
+        position: relative;
+        padding-bottom: 10px;
+
+        :host-context([data-theme="dark"]) & {
+            color: #fff;
+        }
+
+        &.mt-4 {
+            margin-top: 40px;
+        }
+
+        /* Small decorative line */
+        &::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            width: 40px;
+            height: 2px;
+            background-color: var(--brand-gold-primary);
+
+            :host-context([dir="rtl"]) & {
+                right: 0;
+            }
+
+            :host-context([dir="ltr"]) & {
+                left: 0;
+            }
+        }
+    }
+}
+
+/* About Section */
+.about-col {
+    .footer-desc {
+        line-height: 1.8;
+        color: var(--text-secondary);
+        margin-bottom: 30px;
+        font-size: 1rem;
+
+        :host-context([data-theme="dark"]) & {
+            color: #a1a1aa;
+        }
+    }
+
+    .since-text {
+        font-family: var(--font-heading);
+        font-size: 3.5rem;
+        font-weight: 800;
+        color: transparent;
+        -webkit-text-stroke: 1.5px var(--brand-gold-primary);
+        letter-spacing: 2px;
+        margin-top: 10px;
+    }
+}
+
+/* Links Section */
+.links-col {
+    .links-grid {
+        display: flex;
+        gap: 50px;
+
+        ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            flex: 1;
+
+            li {
+                margin-bottom: 18px;
+
+                a {
+                    color: var(--text-secondary);
+                    text-decoration: none;
+                    display: inline-flex;
+                    align-items: center;
+                    font-weight: 500;
+                    position: relative;
+                    /* Ultra-smooth transition */
+                    transition: all 0.9s cubic-bezier(0.25, 0.8, 0.25, 1);
+
+                    :host-context([data-theme="dark"]) & {
+                        color: #a1a1aa;
+                    }
+
+                    &::before {
+                        position: absolute;
+                        top: 50%;
+                        opacity: 0;
+                        font-family: Arial, sans-serif;
+                        font-weight: bold;
+                        color: var(--brand-gold-primary);
+                        font-size: 1.5rem;
+                        line-height: 0;
+                        transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+
+                        :host-context([dir="rtl"]) & {
+                            content: "←";
+                            right: 0;
+                            /* Start outside to the right */
+                            transform: translate(15px, -50%);
+                        }
+
+                        :host-context([dir="ltr"]) & {
+                            content: "→";
+                            left: 0;
+                            /* Start outside to the left */
+                            transform: translate(-15px, -50%);
+                        }
+                    }
+
+                    &:hover {
+                        color: var(--brand-gold-primary);
+
+                        :host-context([dir="rtl"]) & {
+                            padding-right: 25px;
+                        }
+
+                        :host-context([dir="ltr"]) & {
+                            padding-left: 25px;
+                        }
+
+                        &::before {
+                            opacity: 1;
+                            transform: translate(0, -50%);
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+/* Address & Contact */
+.address-col,
+.phone-col {
+
+    .address-text,
+    .email-text {
+        color: var(--text-secondary);
+        line-height: 1.7;
+        margin-bottom: 10px;
+        font-size: 1rem;
+
+        :host-context([data-theme="dark"]) & {
+            color: #a1a1aa;
+        }
+    }
+
+    .email-link,
+    .phone-link {
+        display: inline-block;
+        color: var(--text-primary);
+        font-weight: 700;
+        text-decoration: none;
+        font-size: 1.15rem;
+        transition: color 0.3s ease;
+        unicode-bidi: ltr;
+        /* Ensure numbers don't reverse */
+        direction: ltr;
+        margin-top: 5px;
+
+        :host-context([data-theme="dark"]) & {
+            color: #fff;
+        }
+
+        &:hover {
+            color: var(--brand-gold-primary);
+        }
+    }
+}
+
+/* Social Icons */
+.social-links {
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+
+    .social-icon {
+        width: 42px;
+        height: 42px;
+        background-color: rgba(0, 0, 0, 0.05);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 6px;
+        color: var(--text-primary);
+        text-decoration: none;
+        font-weight: bold;
+        font-size: 1.1rem;
+        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+
+        :host-context([data-theme="dark"]) & {
+            background-color: rgba(255, 255, 255, 0.08);
+            color: #fff;
+        }
+
+        &:hover {
+            background-color: var(--brand-gold-primary);
+            color: #fff;
+            transform: translateY(-5px);
+            box-shadow: 0 5px 15px rgba(189, 145, 80, 0.3);
+        }
+    }
+}
+
+/* --- Footer Bottom --- */
+.footer-bottom {
+    border-top: 1px solid rgba(0, 0, 0, 0.08);
+    padding: 30px 0;
+
+    :host-context([data-theme="dark"]) & {
+        border-top: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .container {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .copyright {
+        color: var(--text-secondary);
+        font-size: 1rem;
+
+        :host-context([data-theme="dark"]) & {
+            color: #a1a1aa;
+        }
+    }
+
+    .scroll-top-btn {
+        width: 45px;
+        height: 45px;
+        border-radius: 50%;
+        background-color: var(--brand-gold-primary);
+        color: #fff;
+        border: none;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 1.3rem;
+        cursor: pointer;
+        transition: background-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+        box-shadow: 0 4px 15px rgba(189, 145, 80, 0.3);
+
+        &:hover {
+            background-color: var(--brand-gold-dark);
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(189, 145, 80, 0.4);
+        }
+    }
+}

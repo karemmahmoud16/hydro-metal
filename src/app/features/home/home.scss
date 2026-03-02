@@ -1,0 +1,877 @@
+/* General Layout Settings */
+.hero-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding-top: 220px;
+  background-color: #ffffff;
+  /* Optional: Faint grid background similar to the image */
+  background-image: linear-gradient(#f4f4f4 1px, transparent 1px), linear-gradient(90deg, #f4f4f4 1px, transparent 1px);
+  background-size: 100px 100px;
+  overflow: hidden;
+  width: 100%;
+  height: 1300px;
+}
+
+/* Text Content Area */
+.hero-content {
+  max-width: 900px;
+  margin-bottom: 60px;
+  padding: 0 20px;
+  z-index: 2;
+}
+
+.gold-subtitle {
+  display: block;
+  color: #eab308;
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  margin-bottom: 15px;
+  padding-top: 10px;
+}
+
+.title {
+  font-size: 4.5rem;
+  color: #103541;
+  font-weight: 800;
+  margin: 0 0 20px 0;
+  line-height: 1.1;
+}
+
+/* Shadow and stroke effect for specific text */
+.outline-text {
+  color: #ffffff;
+  -webkit-text-stroke: 2px #103541;
+  text-shadow: 4px 4px 0px rgba(16, 53, 65, 0.15);
+}
+
+.subtitle {
+  font-size: 18px;
+  color: #64748b;
+  margin: 0 auto 30px auto;
+  line-height: 1.6;
+  max-width: 600px;
+}
+
+/* Action Buttons */
+.hero-buttons {
+  display: flex;
+  gap: 15px;
+  justify-content: center;
+}
+
+.btn-primary, .btn-secondary {
+  padding: 14px 32px;
+  border-radius: 4px;
+  font-weight: 600;
+  text-decoration: none;
+  transition: 0.3s;
+}
+
+.btn-primary {
+  background-color: #4b7b83;
+  color: white;
+}
+
+.btn-primary:hover {
+  background-color: #385d63;
+}
+
+.btn-secondary {
+  background-color: transparent;
+  color: #4b7b83;
+  border: 2px solid #4b7b83;
+}
+
+.btn-secondary:hover {
+  background-color: #4b7b83;
+  color: white;
+}
+
+/* Bottom Image Section */
+.hero-image-wrapper {
+  position: relative;
+  width: 95%;
+  max-width: 1500px;
+  height: 600px; /* Change this value based on your needs */
+  margin: 0 auto;
+}
+
+/* الحاوية الخارجية بأكملها */
+.main-image-section {
+  position: relative; /* ضروري لتموضع النص العائم */
+  width: 95%; /* عشان ندي مساحة خفيفة للجوانب */
+  max-width: 1500px; /* لتحديد أقصى عرض على الشاشات الكبيرة */
+  margin: 0 auto; /* للتوسط الأفقي */
+  overflow: visible; /* عشان النص الدائري يطلع برة الحاوية خفيف */
+  padding-bottom: 20px; /* مسافة خفيفة تحت */
+}
+
+/* حاوية الصورة المستديرة */
+.rounded-image-container {
+  width: 100%;
+  height: 600px; /* نفس الارتفاع في الصورة، يمكن تغييره */
+  background-color: #f0f0f0; /* خلفية احتياطية */
+  border-radius: 250px 250px 0 0; /* هذا هو السحر! انحناء كبير من الأعلى */
+  overflow: hidden; /* عشان الصورة نفسها متخرجش برة الانحناء */
+  box-shadow: 0 10px 30px rgba(0,0,0,0.1); /* ظل خفيف مثل الصورة */
+  z-index: 1; /* عشان الصورة تكون تحت النص */
+}
+
+/* تظبيط الصورة نفسها جوة الحاوية المستديرة */
+.rounded-image-container img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* لضمان ملء الصورة للحاوية بالكامل بدون تمطيط */
+  object-position: center; /* توسيط الصورة */
+}
+
+/* النص الدائري والسهم العائم */
+.floating-explorer {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translate(-50%, -50%); /* للتوسط العمودي والأفقي بدقة */
+  z-index: 10; /* عشان يكون فوق كل حاجة */
+  width: 130px; /* نفس حجم الدائرة العائمة */
+  height: 130px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* حاوية النص الدائري */
+.circular-text-container {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  border: 1px solid #103541; /* لون الحدود مثل الصورة */
+  background-color: #ffffff; /* لون الخلفية بيضاء */
+  border-radius: 50%; /* عشان يكون دائري تماماً */
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.circular-text-container:hover {
+  background-color: #f4f4f4;
+}
+
+/* السهم الذي يشير لأسفل */
+.down-arrow {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%); /* توسط السهم */
+  color: #103541;
+  font-size: 18px;
+  font-weight: bold;
+}
+
+/* النص الدائري باستخدام تأثير CSS (أو صورة PNG دائرية جاهزة) */
+.circular-text-wrap {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  margin: 0;
+}
+
+.circular-text-wrap span {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform-origin: 0 65px; /* مركز الدائرة للنص (نصف القطر) */
+  color: #103541;
+  font-size: 10px; /* حجم صغير للنص */
+  font-weight: 600;
+  letter-spacing: 1px; /* مسافة بين الحروف */
+  text-transform: uppercase;
+}
+
+/* توزيع الحروف بشكل دائري (مثال لـ "EXPLORE MORE") */
+/* قد تحتاج لتعديل الدرجات بناءً على طول النص بالضبط */
+.circular-text-wrap span:nth-child(1) { transform: translateX(-50%) rotate(0deg); }
+.circular-text-wrap span:nth-child(2) { transform: translateX(-50%) rotate(25.7deg); }
+.circular-text-wrap span:nth-child(3) { transform: translateX(-50%) rotate(51.4deg); }
+.circular-text-wrap span:nth-child(4) { transform: translateX(-50%) rotate(77.1deg); }
+.circular-text-wrap span:nth-child(5) { transform: translateX(-50%) rotate(102.8deg); }
+.circular-text-wrap span:nth-child(6) { transform: translateX(-50%) rotate(128.5deg); }
+.circular-text-wrap span:nth-child(7) { transform: translateX(-50%) rotate(154.2deg); }
+.circular-text-wrap span:nth-child(8) { transform: translateX(-50%) rotate(179.9deg); }
+.circular-text-wrap span:nth-child(9) { transform: translateX(-50%) rotate(205.6deg); }
+.circular-text-wrap span:nth-child(10) { transform: translateX(-50%) rotate(231.3deg); }
+.circular-text-wrap span:nth-child(11) { transform: translateX(-50%) rotate(257deg); }
+.circular-text-wrap span:nth-child(12) { transform: translateX(-50%) rotate(282.7deg); }
+.circular-text-wrap span:nth-child(13) { transform: translateX(-50%) rotate(308.4deg); }
+.circular-text-wrap span:nth-child(14) { transform: translateX(-50%) rotate(334.1deg); }
+
+
+/* Responsive adjustments for mobile */
+@media (max-width: 768px) {
+  .rounded-image-container {
+    height: 400px;
+    border-radius: 100px 100px 0 0; /* تقليل الانحناء للموبايل */
+  }
+  
+  .main-image-section {
+    width: 90%; /* مساحة أكبر للجوانب على الموبايل */
+  }
+}
+
+/* Floating Center Button Style */
+.floating-circle {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 130px;
+  height: 130px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 10;
+}
+
+.circle-btn {
+  width: 50px;
+  height: 50px;
+  border: 1px solid #103541;
+  background-color: #ffffff;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #103541;
+  font-size: 18px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.circle-btn:hover {
+  background-color: #f4f4f4;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .title {
+    font-size: 2.5rem;
+  }
+  
+  .main-image {
+    border-radius: 100px 100px 0 0;
+  }
+  
+  .hero-image-wrapper {
+    height: 400px;
+  }
+}
+
+/* =========================================
+   Dark Theme + Original WaitAndSlide Animation (ENLARGED)
+   ========================================= */
+.services-dark-section {
+  padding: 100px 0;
+  /* زودنا المساحة اللي فوق واللي تحت عشان يدي براح */
+  background-color: #0d1117;
+  direction: rtl;
+
+  .container {
+    max-width: 1500px;
+    /* وسعنا الكونتينر الأساسي */
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  /* --- تنسيق الهيدر --- */
+  .section-header {
+    text-align: center;
+    margin-bottom: 100px;
+    /* زودنا المسافة بين الهيدر والكروت */
+
+    .sub-title {
+      display: block;
+      font-family: var(--font-heading, sans-serif);
+      color: var(--brand-gold-primary, #bd9150);
+      font-size: 1.2rem;
+      /* كبرنا الخط */
+      font-weight: 700;
+      margin-bottom: 15px;
+      letter-spacing: 1px;
+    }
+
+    .main-title {
+      font-family: var(--font-heading, sans-serif);
+      font-size: 3.2rem;
+      /* كبرنا العنوان الأساسي */
+      font-weight: 900;
+      color: #ffffff;
+      margin: 0 0 20px 0;
+
+      .gold-text {
+        color: var(--brand-gold-primary, #bd9150);
+      }
+    }
+
+    .header-divider {
+      width: 80px;
+      /* طولنا الخط شوية */
+      height: 5px;
+      background-color: var(--brand-gold-primary, #bd9150);
+      margin: 0 auto;
+      border-radius: 5px;
+      box-shadow: 0 0 10px rgba(189, 145, 80, 0.5);
+    }
+  }
+
+  /* --- الشباك والسير الأصلي (بالمقاسات الكبيرة) --- */
+  .slider-viewport {
+    /* الحسبة الجديدة:
+      4 كروت × 300 بيكسل = 1200
+      3 مسافات × 40 بيكسل = 120
+      المجموع = 1320 بيكسل 
+    */
+    width: 1320px;
+    overflow: hidden;
+    padding: 20px 0 50px;
+    direction: ltr;
+  }
+
+  .circle-track {
+    display: flex;
+    gap: 40px;
+    width: max-content;
+    animation: waitAndSlideBig 20s infinite;
+    /* ربطناه بالأنيميشن الجديد */
+
+    &:hover {
+      animation-play-state: paused;
+    }
+  }
+
+  /* --- تصميم الكارت الغامق (الحجم الكبير) --- */
+  .dark-card {
+    width: 300px;
+    /* عرض الكارت زاد 50 بيكسل */
+    flex-shrink: 0;
+    direction: rtl;
+    background: #161b22;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    border-radius: 16px;
+    padding: 40px 20px 30px;
+    /* زودنا البراح الداخلي */
+    text-align: center;
+    transition: all 0.4s ease;
+    position: relative;
+    cursor: pointer;
+
+    .card-image-wrapper {
+      width: 180px;
+      /* الصورة كبرت 30 بيكسل */
+      height: 180px;
+      margin: 0 auto 25px;
+      border-radius: 50%;
+      position: relative;
+      padding: 8px;
+      border: 2px solid rgba(189, 145, 80, 0.2);
+      transition: all 0.4s ease;
+
+      img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        border-radius: 50%;
+      }
+
+      .icon-badge {
+        position: absolute;
+        bottom: 5px;
+        right: 5px;
+        width: 48px;
+        height: 48px;
+        background: #161b22;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 8px;
+        border: 1px solid var(--brand-gold-primary, #bd9150);
+
+        img {
+          object-fit: contain;
+        }
+      }
+    }
+
+    .card-content {
+      .service-title {
+        font-family: var(--font-heading, sans-serif);
+        font-size: 1.3rem;
+        /* الخط كبر */
+        font-weight: 800;
+        color: #ffffff;
+        margin-bottom: 15px;
+        transition: color 0.3s ease;
+      }
+
+      .service-desc {
+        font-family: var(--font-body, sans-serif);
+        font-size: 1rem;
+        /* الخط كبر */
+        color: #8b949e;
+        line-height: 1.7;
+        margin: 0;
+      }
+    }
+
+    &:hover {
+      transform: translateY(-10px);
+      border-color: rgba(189, 145, 80, 0.5);
+      box-shadow: 0 15px 35px rgba(189, 145, 80, 0.15);
+
+      .card-image-wrapper {
+        transform: scale(1.05);
+        border-color: var(--brand-gold-primary, #bd9150);
+        box-shadow: 0 0 20px rgba(189, 145, 80, 0.3);
+      }
+
+      .card-content .service-title {
+        color: var(--brand-gold-primary, #bd9150);
+      }
+    }
+  }
+}
+
+/* الأنيميشن الجديد المتظبط على المقاسات الكبيرة */
+/* النقلة = عرض الكارت (300) + المسافة (40) = 340px */
+@keyframes waitAndSlideBig {
+
+  0%,
+  15% {
+    transform: translateX(0);
+  }
+
+  20%,
+  35% {
+    transform: translateX(-340px);
+  }
+
+  40%,
+  55% {
+    transform: translateX(-680px);
+  }
+
+  60%,
+  75% {
+    transform: translateX(-1020px);
+  }
+
+  80%,
+  95% {
+    transform: translateX(-1360px);
+  }
+
+  100% {
+    transform: translateX(-1700px);
+  }
+}
+
+/* =========================================
+   Minimal Typography About Section (Dark Mode)
+   ========================================= */
+.minimal-about-section {
+  padding: 120px 0;
+  /* نفس لون الخلفية الملكي عشان يكمل مع السيكشن اللي تحته */
+  background-color: #0d1117;
+  direction: rtl;
+
+  .container {
+    max-width: 1350px;
+    margin: 0 auto;
+    padding: 0 20px;
+  }
+
+  .about-top-wrapper {
+    display: grid;
+    grid-template-columns: 1.5fr 6fr 1.5fr;
+    gap: 30px;
+    margin-bottom: 100px;
+    align-items: flex-start;
+
+    @media (max-width: 992px) {
+      grid-template-columns: 1fr;
+      text-align: center;
+      gap: 30px;
+    }
+
+    .badge-area {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-family: var(--font-heading, sans-serif);
+      font-weight: 700;
+      color: #e6e6e6;
+      /* لون أوف-وايت عشان يقرا حلو على الغامق */
+      font-size: 1.1rem;
+
+      @media (max-width: 992px) {
+        justify-content: center;
+      }
+
+      img {
+        height: 26px;
+        width: auto;
+        display: block;
+        object-fit: contain;
+      }
+    }
+
+    .text-area {
+      text-align: right;
+
+      @media (max-width: 992px) {
+        text-align: center;
+      }
+
+      .main-heading {
+        font-family: var(--font-heading, sans-serif);
+        font-size: 3.8rem;
+        font-weight: 900;
+        color: #ffffff;
+        /* أبيض ناصع عشان يخطف العين */
+        line-height: 1.3;
+        margin-top: 0;
+        margin-bottom: 30px;
+
+        @media (max-width: 768px) {
+          font-size: 2.5rem;
+        }
+
+        .gold-text {
+          color: var(--brand-gold-primary, #bd9150);
+        }
+      }
+
+      .desc-text {
+        font-family: var(--font-body, sans-serif);
+        font-size: 1.15rem;
+        color: #8b949e;
+        /* رمادي شيك جداً ومريح للقراءة في الدارك مود */
+        line-height: 1.8;
+        max-width: 850px;
+        margin: 0;
+      }
+    }
+
+    .action-area {
+      text-align: left;
+
+      @media (max-width: 992px) {
+        text-align: center;
+      }
+
+      .about-btn {
+        display: inline-flex;
+        align-items: center;
+        gap: 12px;
+        background-color: var(--brand-gold-primary, #bd9150);
+        /* الكلمة جوه الزرار بقت سودة عشان تبرز أكتر مع الدهبي والدارك مود */
+        color: #1a1a1a;
+        padding: 18px 35px;
+        border-radius: 50px;
+        font-family: var(--font-heading, sans-serif);
+        font-weight: 900;
+        /* تقّلنا الخط شوية */
+        font-size: 1.1rem;
+        text-decoration: none;
+        transition: all 0.3s ease;
+        box-shadow: 0 10px 25px rgba(189, 145, 80, 0.3);
+
+        &:hover {
+          background-color: #ffffff;
+          box-shadow: 0 10px 20px rgba(255, 255, 255, 0.15);
+          transform: translateY(-4px);
+        }
+      }
+    }
+  }
+
+  /* --- تنسيق الأرقام والعدادات للدارك مود --- */
+  /* --- تنسيق الأرقام والعدادات للدارك مود --- */
+  .about-stats-row {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 30px;
+    text-align: center;
+
+    @media (max-width: 992px) {
+      grid-template-columns: repeat(2, 1fr);
+      gap: 50px;
+    }
+
+    @media (max-width: 576px) {
+      grid-template-columns: 1fr;
+    }
+
+    .stat-box {
+      .stat-num {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-family: var(--font-heading, sans-serif);
+        font-size: 5.5rem;
+        font-weight: 900;
+        color: var(--brand-gold-primary);
+        line-height: 1;
+        margin-bottom: 15px;
+        direction: ltr;
+
+        /* السر ده بيمنع الأرقام إنها ترقص أو تتهز وهي بتجري */
+        font-variant-numeric: tabular-nums;
+      }
+
+      .stat-label {
+        display: block;
+        font-family: var(--font-body, sans-serif);
+        font-size: 1.1rem;
+        color: #8b949e;
+        font-weight: 600;
+      }
+    }
+  }
+}
+
+/* =========================================
+   Products Section (Style 05 - Exact Image Match)
+   ========================================= */
+.products-style-05-light {
+  padding: 120px 0;
+  background-color: #f5f6f8;
+  /* Light gray background matching the image */
+  direction: rtl;
+
+  .relative-container {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 20px;
+    position: relative;
+  }
+
+  /* --- تنسيق الهيدر --- */
+  .section-header {
+    text-align: center;
+    margin-bottom: 70px;
+
+    .sub-title {
+      display: block;
+      font-family: var(--font-heading, sans-serif);
+      color: var(--brand-gold-primary, #bd9150);
+      font-size: 1.1rem;
+      font-weight: 700;
+      margin-bottom: 10px;
+    }
+
+    .main-title {
+      font-family: var(--font-heading, sans-serif);
+      font-size: 2.8rem;
+      font-weight: 900;
+      color: #111827;
+      /* Dark elegant text for the light background */
+      margin: 0 0 15px 0;
+
+      .gold-text {
+        color: var(--brand-gold-primary, #bd9150);
+      }
+    }
+
+    .header-divider {
+      width: 60px;
+      height: 4px;
+      background-color: var(--brand-gold-primary, #bd9150);
+      margin: 0 auto;
+      border-radius: 5px;
+      box-shadow: 0 0 10px rgba(189, 145, 80, 0.4);
+    }
+  }
+
+  /* --- زراير السلايدر --- */
+  .slider-btn {
+    position: absolute;
+    top: 55%;
+    transform: translateY(-50%);
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background-color: #ffffff;
+    border: 1px solid rgba(189, 145, 80, 0.3);
+    color: var(--brand-gold-primary, #bd9150);
+    font-size: 1.2rem;
+    cursor: pointer;
+    z-index: 10;
+    transition: all 0.3s ease;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+    /* very soft shadow */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    &:hover {
+      background-color: var(--brand-gold-primary, #bd9150);
+      color: #ffffff;
+    }
+
+    &.prev-btn {
+      right: -25px;
+    }
+
+    &.next-btn {
+      left: -25px;
+    }
+
+    @media (max-width: 1450px) {
+      &.prev-btn {
+        right: 10px;
+      }
+
+      &.next-btn {
+        left: 10px;
+      }
+    }
+  }
+
+  .slider-wrapper {
+    width: 100%;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    scroll-behavior: smooth;
+    padding-bottom: 60px;
+
+    scrollbar-width: none;
+
+    &::-webkit-scrollbar {
+      display: none;
+    }
+  }
+
+  .cards-track {
+    display: flex;
+    gap: 30px;
+    width: max-content;
+    padding: 20px 10px 40px;
+  }
+
+  /* --- تصميم الكارت نفسه المطابق للصورة --- */
+  .product-card {
+    width: 380px;
+    scroll-snap-align: start;
+    position: relative;
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+
+    /* الجزء العلوي: الصورة (متشفتة لليمين) */
+    .img-wrapper {
+      align-self: flex-start;
+      /* بيخليها تلزق في بداية الكارت (يمين في العربي) */
+      width: 85%;
+      height: 260px;
+      /* تم محاكاة كيرف الصورة الأساسي بحيث يكون الكورنر الشمال فوق واخد كيرف أوسع زي شكل الفولدر تاب */
+      border-radius: 50px 16px 16px 16px;
+      overflow: hidden;
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.05);
+      position: relative;
+      z-index: 1;
+
+      img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition: transform 0.6s ease;
+      }
+    }
+
+    /* الجزء السفلي: بوكس الكلام المتداخل (متشفت للشمال) */
+    .content-box {
+      align-self: flex-end;
+      /* لزقناه في نهاية الكارت (شمال في العربي) */
+      width: 88%;
+      background-color: #ffffff;
+      margin-top: -85px;
+      /* التداخل المتناسق مع الصورة المرفوعة */
+      padding: 35px 30px;
+      border-radius: 20px;
+      /* كيرف قوي للصندوق الأبيض زي الصورة */
+      position: relative;
+      box-shadow: 0 15px 40px rgba(0, 0, 0, 0.05);
+      /* ظل ناعم بيعكس الإحساس الأبيض الفخم */
+      transition: all 0.4s ease;
+      z-index: 2;
+      /* أعلى من الصورة */
+
+      /* الرقم المفرغ اللي على طرف الكارت */
+      .stroke-number {
+        position: absolute;
+        top: -35px;
+        /* قاطع حرف البوكس من فوق، نص الرقم جوه التكست بوكس ونص بره */
+        left: 30px;
+        /* موجود فوق على الشمال */
+        font-family: var(--font-heading, sans-serif);
+        font-size: 4.5rem;
+        font-weight: 900;
+        color: transparent;
+        -webkit-text-stroke: 1.5px #e5e7eb;
+        /* رمادي فاتح جداً زيه زي الصورة */
+        line-height: 1;
+        transition: all 0.4s ease;
+        z-index: 5;
+      }
+
+      h3 {
+        font-family: var(--font-heading, sans-serif);
+        font-size: 1.35rem;
+        font-weight: 800;
+        color: #111827;
+        /* أسود صريح زي الصورة */
+        margin: 0 0 10px 0;
+        transition: color 0.3s ease;
+      }
+
+      p {
+        font-family: var(--font-body, sans-serif);
+        font-size: 1.05rem;
+        color: #6b7280;
+        /* رمادي مريح للعين */
+        line-height: 1.6;
+        margin: 0;
+      }
+    }
+
+    /* --- تأثير الهوفر الرائع --- */
+    &:hover {
+      .img-wrapper img {
+        transform: scale(1.08);
+      }
+
+      .content-box {
+        transform: translateY(-8px);
+        box-shadow: 0 20px 45px rgba(0, 0, 0, 0.1);
+        /* تظليل أقوى شوية وقت الهوفر */
+
+        h3 {
+          color: var(--brand-gold-primary, #bd9150);
+        }
+
+        .stroke-number {
+          /* الرقم بيتملي بلون دهبي شيك جداً مع الهوفر */
+          color: rgba(189, 145, 80, 0.1);
+          transform: translateY(-5px);
+          -webkit-text-stroke: 1.5px var(--brand-gold-primary, #bd9150);
+        }
+      }
+    }
+  }
+}

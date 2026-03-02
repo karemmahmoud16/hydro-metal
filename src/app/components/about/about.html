@@ -1,0 +1,76 @@
+<section class="about-section">
+    <!-- Huge background watermark text -->
+    <div class="watermark-bg">ABOUT HYDRO</div>
+
+    <div class="container">
+        <div class="about-grid">
+            <!-- Left Images Area -->
+            <div class="about-images">
+                <!-- Floating Grid Background Pattern -->
+                <div class="pattern-dots"></div>
+
+                <!-- Back Image (Bottom/Left) -->
+                <div class="image-back">
+                    <!-- Using placeholder image from public/images, user can change later -->
+                    <img src="/images/service-4.png" alt="Industrial Framework" />
+                </div>
+
+                <!-- Front Image (Top/Right overlapping) -->
+                <div class="image-front">
+                    <img src="/images/about-main.jpg" alt="Experienced Engineer" />
+                </div>
+            </div>
+
+            <!-- Right Content Area -->
+            <div class="about-content">
+                <!-- Badge Title -->
+                <div class="section-badge">
+                    <img src="/images/logo croped.png" alt="Logo" class="badge-logo">
+                    <span class="sub-title">عن شركتنا</span>
+                </div>
+
+                <!-- Main Title -->
+                <h2 class="main-title">
+                    نستند إلى خبراتنا لتقديم <br>
+                    حلول صناعية <span class="gold-text">استثنائية</span>
+                </h2>
+
+                <!-- Tabs Content Block -->
+                <div class="tabs-wrapper">
+                    <div class="tabs-header">
+                        <button class="tab-btn" [class.active]="activeTab === 'history'"
+                            (click)="setActiveTab('history')">من نحن</button>
+                        <button class="tab-btn" [class.active]="activeTab === 'mission'"
+                            (click)="setActiveTab('mission')">رسالتنا</button>
+                        <button class="tab-btn" [class.active]="activeTab === 'vision'"
+                            (click)="setActiveTab('vision')">رؤيتنا</button>
+                    </div>
+
+                    <div class="tab-content">
+                        <p class="desc-text" *ngIf="activeTab === 'history'">
+                            تأسست شركة هايدرو للصناعات عام 1999 بهدف تقديم حلول صناعية متكاملة في مجال كماليات أنظمة
+                            الألومنيوم. تتميز الشركة بتقديم منتجات عالية الجودة وفقاً للمعايير الدولية، وتعد واحدة من
+                            الرواد في السوق المحلي والعربي.
+                        </p>
+                        <p class="desc-text" *ngIf="activeTab === 'mission'">
+                            في عام 2020 أنشأت الشركة مصنعاً متخصصاً لتقديم أفضل الحلول الإنتاجية، وبدأت بالفعل الإنتاج
+                            عام 2021، وتميزت بتوسيع خطوط الإنتاج لتلبية احتياجات العملاء والمشاريع الحديثة.
+                        </p>
+                        <p class="desc-text" *ngIf="activeTab === 'vision'">
+                            تعمل الشركة على تطوير خبراتها باستمرار لضمان جودة التصنيع المبتكر ومواكبة أحدث التطورات في
+                            التصميم المعماري الحديث لتوفير منتجات تدوم وتقدم استدامة صناعية.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Actions -->
+                <div class="action-row">
+                    <a routerLink="/about" class="explore-btn solid-btn">
+                        من نحن<span class="arrow">→</span>
+                    </a>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</section>

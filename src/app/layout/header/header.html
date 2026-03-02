@@ -1,0 +1,80 @@
+<header class="main-header">
+  <div class="container">
+
+    <div class="logo">
+      <a routerLink="/">
+        <img src="/images/logo.png" alt="Hydro Metal Logo" class="logo-img">
+      </a>
+    </div>
+
+    <!-- Mobile Menu Toggle Button -->
+    <button class="mobile-nav-toggle" (click)="toggleMobileMenu()" [class.active]="isMobileMenuOpen"
+      aria-label="Toggle navigation">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+
+    <nav class="navbar" [class.menu-open]="isMobileMenuOpen">
+      <!-- Close button inside the menu for better UX on mobile -->
+      <button class="mobile-nav-close" (click)="toggleMobileMenu()">×</button>
+      <ul>
+        <li><a routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">الرئيسية</a></li>
+
+        <li class="dropdown">
+          <a routerLink="/about" class="dropdown-toggle" routerLinkActive="active">
+            عن الشركة
+            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none"
+              stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="chevron">
+              <polyline points="6 9 12 15 18 9"></polyline>
+            </svg>
+          </a>
+          <ul class="dropdown-menu">
+            <li><a routerLink="/about/who-we-are">من نحن</a></li>
+            <li><a routerLink="/about/history">تاريخنا</a></li>
+            <li><a routerLink="/about/departments">أقسامنا</a></li>
+            <li><a routerLink="/projects">مشاريعنا</a></li>
+          </ul>
+        </li>
+
+        <li><a routerLink="/products" routerLinkActive="active">المنتجات</a></li>
+        <li><a routerLink="/services" routerLinkActive="active">خدماتنا</a></li>
+      </ul>
+    </nav>
+
+    <div class="header-controls">
+      <div class="theme-switch-wrapper">
+        <svg class="icon moon-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+          <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+        </svg>
+        <label class="theme-switch" for="checkbox">
+          <input type="checkbox" id="checkbox" (change)="toggleTheme()" [checked]="isDarkMode" />
+          <div class="slider round"></div>
+        </label>
+        <svg class="icon sun-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+          <circle cx="12" cy="12" r="5"></circle>
+          <line x1="12" y1="1" x2="12" y2="3"></line>
+          <line x1="12" y1="21" x2="12" y2="23"></line>
+          <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+          <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+          <line x1="1" y1="12" x2="3" y2="12"></line>
+          <line x1="21" y1="12" x2="23" y2="12"></line>
+          <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+          <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+        </svg>
+      </div>
+
+      <div class="lang-switch-wrapper">
+        <span class="lang-text" [class.active]="currentLang === 'en'">EN</span>
+        <label class="lang-switch">
+          <input type="checkbox" (change)="toggleLanguage()" [checked]="currentLang === 'en'" />
+          <div class="flag-slider round"></div>
+        </label>
+        <span class="lang-text" [class.active]="currentLang === 'ar'">AR</span>
+      </div>
+
+      <a routerLink="/rfq" class="btn-quote">طلب تسعير</a>
+    </div>
+
+  </div>
+</header>

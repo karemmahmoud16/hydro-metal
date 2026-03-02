@@ -1,0 +1,45 @@
+<section class="projects-section">
+    <!-- Header wrapper constrained like other sections -->
+    <div class="header-container">
+        <div class="section-badge">
+            <span class="sub-title">أعمالنا</span>
+        </div>
+        <h2 class="main-title">
+            أبرز <span class="gold-text">المشاريع</span>
+        </h2>
+    </div>
+
+    <div class="container relative-container">
+        <div class="projects-grid">
+            <!-- 4 items generated from list -->
+            <div class="project-item" *ngFor="let item of projectsList">
+
+                <!-- Background Image scaled on hover -->
+                <div class="bg-image" [ngStyle]="{'background-image': 'url(' + item.image + ')'}"></div>
+
+                <!-- Transparent Overlay coming from top to bottom -->
+                <div class="overlay"></div>
+
+                <!-- Interactive content -->
+                <div class="content">
+                    <div class="text-group">
+                        <h3 class="title">{{ item.title }}</h3>
+                        <span class="category">{{ item.category }}</span>
+                    </div>
+
+                    <div class="arrow-btn">
+                        <!-- Left-facing arrow typical for RTL Next actions -->
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"
+                            class="arrow-icon">
+                            <line x1="19" y1="12" x2="5" y2="12"></line>
+                            <polyline points="12 19 5 12 12 5"></polyline>
+                        </svg>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+</section>

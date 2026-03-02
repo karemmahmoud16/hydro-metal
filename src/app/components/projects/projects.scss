@@ -1,0 +1,265 @@
+/* =========================================
+   Projects Section (4 Seamless Grid)
+   ========================================= */
+:host {
+    display: block;
+}
+
+.projects-section {
+    background-color: var(--bg-main);
+    transition: background-color 0.3s ease;
+    overflow: hidden;
+    padding: 120px 0 0 0;
+    /* Huge padding up top to separate from About, 0 bottom to flush against edges */
+
+    @media (max-width: 992px) {
+        padding: 80px 0 0 0;
+    }
+
+    .header-container {
+        max-width: 1250px;
+        margin: 0 auto 50px auto;
+        /* 50px space before the grid */
+        padding: 0 20px;
+        direction: rtl;
+        /* Enforce RTL for the titles */
+        text-align: right;
+
+        .section-badge {
+            display: inline-flex;
+            align-items: center;
+            color: var(--brand-gold-primary);
+            font-family: var(--font-heading);
+            font-weight: 700;
+            font-size: 0.95rem;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+            margin-bottom: 20px;
+        }
+
+        .main-title {
+            font-family: var(--font-heading);
+            font-size: 3.5rem;
+            font-weight: 800;
+            color: var(--text-primary);
+            line-height: 1.2;
+            margin: 0;
+            transition: color 0.3s ease;
+
+            .gold-text {
+                color: var(--brand-gold-primary);
+            }
+
+            @media (max-width: 1200px) {
+                font-size: 2.8rem;
+            }
+
+            @media (max-width: 576px) {
+                font-size: 2.2rem;
+            }
+        }
+    }
+
+    /* Removed vertical padding so it perfectly flushes or add slight padding if requested. 
+       Usually full width grids don't have container padding. But let's keep container padding 
+       based on the other sections so it aligns with 'About' or 'Products'. */
+    .container {
+        max-width: 100%;
+        /* Make it edge to edge or constrained? Picture 2 shows edge-to-edge boxes. */
+        padding: 0;
+        margin: 0 auto;
+    }
+
+    .projects-grid {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 0;
+        width: 100%;
+        min-height: 600px;
+        /* No border radius or box shadow if it's edge-to-edge pure images */
+
+        @media (max-width: 1200px) {
+            grid-template-columns: repeat(2, 1fr);
+            min-height: 800px;
+        }
+
+        @media (max-width: 768px) {
+            grid-template-columns: 1fr;
+            min-height: auto;
+        }
+    }
+
+    .project-item {
+        position: relative;
+        overflow: hidden;
+        cursor: pointer;
+        min-height: 650px;
+        /* Tall images like the picture */
+        display: flex;
+        /* For overlay structural logic if needed */
+
+        @media (max-width: 768px) {
+            min-height: 500px;
+        }
+
+        /* 1) Static Background Image Element */
+        .bg-image {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-size: cover;
+            background-position: center;
+            transition: transform 0.6s cubic-bezier(0.25, 0.8, 0.25, 1);
+            z-index: 1;
+        }
+
+        /* 2) Dark transparent overlay descending from top */
+        .overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            /* Elegant deep dark gradient matching the primary text color */
+            background: linear-gradient(to bottom, rgba(15, 19, 20, 0.8), rgba(15, 19, 20, 0.95));
+            z-index: 2;
+            transform: translateY(-101%);
+            transition: transform 0.5s cubic-bezier(0.25, 0.8, 0.25, 1);
+
+            /* Premium glass blur effect */
+            backdrop-filter: blur(4px);
+            -webkit-backdrop-filter: blur(4px);
+
+            :host-context([data-theme="dark"]) & {
+                /* Pure deep black gradient for dark mode */
+                background: linear-gradient(to bottom, rgba(5, 5, 5, 0.85), rgba(0, 0, 0, 0.98));
+            }
+        }
+
+        /* Minor right border between images as separator */
+        border-right: 1px solid rgba(255, 255, 255, 0.15);
+
+        &:last-child {
+            border-right: none;
+        }
+
+        :host-context([data-theme="dark"]) & {
+            border-right: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        /* 3) Interactive Content Layer */
+        .content {
+            position: absolute;
+            top: 0;
+            left: 0;
+            /* Or inset if needed */
+            width: 100%;
+            height: 100%;
+            z-index: 3;
+            padding: 40px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            direction: rtl;
+            /* Enforce RTL internally */
+
+            /* So mouse doesn't get blocked by invisible empty div area */
+            pointer-events: none;
+
+            * {
+                pointer-events: auto;
+                /* Re-enable clicks on real content */
+            }
+
+            .text-group {
+                text-align: right;
+
+                .title {
+                    font-family: var(--font-heading);
+                    font-size: 1.85rem;
+                    font-weight: 800;
+                    color: #ffffff;
+                    margin: 0 0 12px 0;
+                    line-height: 1.4;
+
+                    /* Start translated from the right side */
+                    transform: translateX(60px);
+                    opacity: 0;
+                    transition: transform 0.6s cubic-bezier(0.25, 0.8, 0.25, 1), opacity 0.5s ease;
+                    transition-delay: 0.1s;
+                }
+
+                .category {
+                    display: block;
+                    font-family: var(--font-body);
+                    font-size: 1.05rem;
+                    font-weight: 500;
+                    color: rgba(255, 255, 255, 0.8);
+
+                    transform: translateX(40px);
+                    opacity: 0;
+                    transition: transform 0.6s cubic-bezier(0.25, 0.8, 0.25, 1), opacity 0.5s ease;
+                    transition-delay: 0.15s;
+                }
+            }
+
+            .arrow-btn {
+                /* Align to the cross-axis end (which is left in RTL) */
+                align-self: flex-end;
+                margin-top: auto;
+                width: 55px;
+                height: 55px;
+                border-radius: 50%;
+                background-color: rgba(255, 255, 255, 0.15);
+                backdrop-filter: blur(8px);
+                border: 1px solid rgba(255, 255, 255, 0.1);
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                color: #ffffff;
+
+                /* Start translated from the left side (outside area) */
+                transform: translateX(-50px);
+                opacity: 0;
+                transition: transform 0.6s cubic-bezier(0.25, 0.8, 0.25, 1), opacity 0.5s ease, background-color 0.3s ease;
+                transition-delay: 0.2s;
+
+                &:hover {
+                    background-color: var(--brand-gold-primary);
+                    border-color: var(--brand-gold-primary);
+                }
+            }
+        }
+
+        /* 4) HOVER ANIMATION TRIGGER */
+        &:hover {
+            .bg-image {
+                transform: scale(1.15);
+                /* Slight zoom on image */
+            }
+
+            .overlay {
+                transform: translateY(0);
+                /* Slide overlay down from top */
+            }
+
+            .content {
+
+                .text-group .title,
+                .text-group .category {
+                    transform: translateX(0);
+                    /* Text settles from right to left (0) */
+                    opacity: 1;
+                }
+
+                .arrow-btn {
+                    transform: translateX(0);
+                    /* Arrow settles from left to right (0) */
+                    opacity: 1;
+                }
+            }
+        }
+    }
+}

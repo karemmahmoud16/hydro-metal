@@ -1,0 +1,246 @@
+/* =========================================
+   Industrial Profiles (Matched Animated Style)
+   ========================================= */
+:host {
+    display: block;
+}
+
+.modern-profiles {
+    padding: 120px 0;
+    background-color: var(--bg-main);
+    transition: background-color 0.3s ease;
+    overflow: hidden;
+
+    .container {
+        max-width: 1550px;
+        margin: 0 auto;
+        padding: 0 20px;
+    }
+
+    /* --- Section Header --- */
+    .section-heading {
+        text-align: center;
+        margin-bottom: 70px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+
+        .subtitle {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            color: #eab308;
+            /* Matches the gold/yellow sub text */
+            font-family: var(--font-heading);
+            font-weight: 700;
+            font-size: 0.95rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 20px;
+
+            svg {
+                fill: #eab308;
+            }
+        }
+
+        .title {
+            font-family: var(--font-heading);
+            font-size: 3.5rem;
+            font-weight: 800;
+            color: var(--text-primary);
+            margin: 0;
+            transition: color 0.3s ease;
+
+            @media (max-width: 768px) {
+                font-size: 2.5rem;
+            }
+        }
+    }
+
+    /* --- Grid Layout --- */
+    .profiles-grid {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 30px;
+
+        @media (max-width: 1200px) {
+            grid-template-columns: repeat(2, 1fr);
+            gap: 40px;
+        }
+
+        @media (max-width: 768px) {
+            grid-template-columns: 1fr;
+        }
+    }
+
+    /* --- Individual Service Card --- */
+    .profile-card {
+        position: relative;
+        background-color: var(--bg-surface);
+        display: flex;
+        flex-direction: column;
+        padding: 40px 30px 30px;
+        transition: background-color 0.3s ease, transform 0.4s ease, box-shadow 0.4s ease;
+        cursor: pointer;
+        min-height: 480px;
+
+        /* Faint top-right pattern representing hexagons */
+        background-image:
+            radial-gradient(circle at top right, rgba(0, 0, 0, 0.03) 0%, transparent 50%),
+            linear-gradient(135deg, transparent 95%, rgba(0, 0, 0, 0.01) 95%);
+        background-size: 100% 100%;
+        background-repeat: no-repeat;
+
+        [data-theme="dark"] & {
+            background-image: radial-gradient(circle at top right, rgba(255, 255, 255, 0.02) 0%, transparent 50%);
+        }
+
+        /* Animated bottom border (Blue highlight line) */
+        &::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            inset-inline-start: 0;
+            width: 0;
+            height: 4px;
+            background-color: #BD9150;
+            transition: width 0.5s ease;
+            z-index: 5;
+        }
+
+        /* Hover States */
+        &:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.08);
+
+            &::after {
+                width: 100%;
+            }
+
+            .card-media .image-wrapper {
+                border-start-start-radius: 100px;
+                /* Big curve top-left on hover */
+
+                img {
+                    transform: scale(1.1);
+                }
+
+                .hover-circle {
+                    opacity: 1;
+                    transform: translate(-50%, -50%) scale(1);
+                }
+            }
+
+            .card-content .card-link {
+                color: #BD9150;
+
+                .arrow-icon {
+                    transform: translateX(8px);
+
+                    [dir="rtl"] & {
+                        transform: translateX(-8px);
+                    }
+                }
+            }
+        }
+
+        /* Content Area inside Card */
+        .card-content {
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+            z-index: 2;
+            margin-bottom: 25px;
+
+            .card-title {
+                font-family: var(--font-heading);
+                font-weight: 800;
+                font-size: 1.6rem;
+                color: var(--text-primary);
+                margin: 0 0 15px;
+                line-height: 1.3;
+                transition: color 0.3s ease;
+            }
+
+            .card-desc {
+                font-family: var(--font-body);
+                font-size: 0.95rem;
+                color: var(--text-secondary);
+                line-height: 1.7;
+                margin: 0 0 25px;
+                transition: color 0.3s ease;
+            }
+
+            .card-link {
+                margin-top: auto;
+                color: #a0aec0;
+                display: flex;
+                align-items: center;
+                transition: color 0.3s ease;
+                font-size: 1.4rem;
+                /* Enlarged for standard slim arrow */
+
+                .arrow-icon {
+                    transition: transform 0.4s ease;
+                    display: inline-block;
+                }
+            }
+        }
+
+        /* Media Area (Image + Overlay elements) */
+        .card-media {
+            position: relative;
+            height: 220px;
+            z-index: 2;
+
+            .image-wrapper {
+                width: 100%;
+                height: 100%;
+                position: relative;
+                overflow: hidden;
+                border-start-start-radius: 0;
+                transition: border-start-start-radius 0.6s cubic-bezier(0.25, 0.8, 0.25, 1);
+
+                img {
+                    width: 100%;
+                    height: 100%;
+                    object-fit: cover;
+                    transition: transform 0.6s cubic-bezier(0.25, 0.8, 0.25, 1);
+                }
+
+                .hover-circle {
+                    position: absolute;
+                    top: 50%;
+                    left: 50%;
+                    transform: translate(-50%, -50%) scale(0.6);
+                    width: 60px;
+                    height: 60px;
+                    border-radius: 50%;
+                    border: 1px solid rgba(255, 255, 255, 0.6);
+                    opacity: 0;
+                    transition: all 0.6s cubic-bezier(0.25, 0.8, 0.25, 1);
+                    pointer-events: none;
+                }
+            }
+
+            /* Number Block overlapping bottom corner */
+            .card-number {
+                position: absolute;
+                bottom: -15px;
+                inset-inline-start: 15px;
+                /* Inset from the left strictly */
+                background-color: var(--bg-surface);
+                color: #BD9150;
+                font-family: var(--font-heading);
+                font-size: 1.1rem;
+                font-weight: 800;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                width: 38px;
+                height: 38px;
+                z-index: 5;
+            }
+        }
+    }
+}

@@ -1,1 +1,58 @@
-/* You can add global styles to this file, and also import other style files */
+/* Google Fonts Import (Montserrat & Poppins for EN, Cairo for AR) */
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;900&family=Poppins:wght@300;400;500&family=Cairo:wght@400;600;700&display=swap');
+
+/* Light Theme Variables (Default) */
+:root {
+  /* Backgrounds */
+  --bg-main: #FFFFFF;
+  --bg-surface: #F5F7F8;
+  
+  /* Brand Colors */
+  --brand-gold-primary: #BD9150;
+  --brand-gold-dark: #7B4820;
+  --brand-gold-muted: #8B856F;
+  
+  /* Text Colors */
+  --text-primary: #0F1314;
+  --text-secondary: #4A5568;
+
+  /* Fonts */
+  --font-heading: 'Montserrat', 'Cairo', sans-serif;
+  --font-body: 'Poppins', 'Cairo', sans-serif;
+}
+
+/* Dark Theme Variables (Activated via data-theme attribute) */
+[data-theme="dark"] {
+  --bg-main: #0F1314;
+  --bg-surface: #1a2022;
+  --text-primary: #FFFFFF;
+  --text-secondary: #8B856F;
+}
+
+/* Base resets */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Body styling with smooth transition for theme toggling */
+body {
+  background-color: var(--bg-main);
+  color: var(--text-primary);
+  font-family: var(--font-body);
+  line-height: 1.6;
+  overflow-x: hidden;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-heading);
+  font-weight: 700;
+  color: var(--text-primary);
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}

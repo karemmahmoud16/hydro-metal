@@ -1,0 +1,112 @@
+<footer class="main-footer">
+
+    <!-- Newsletter Box overlapping the border -->
+    <div class="newsletter-wrapper">
+        <div class="container">
+            <div class="newsletter-box">
+                <div class="newsletter-content">
+                    <div class="newsletter-img">
+                        <svg viewBox="0 0 24 24" fill="none" class="mailbox-icon">
+                            <!-- mailbox illustration SVG -->
+                            <path
+                                d="M4 7V19C4 20.1046 4.89543 21 6 21H18C19.1046 21 20 20.1046 20 19V7M4 7L12 11L20 7M4 7C4 5.89543 4.89543 5 6 5H18C19.1046 5 20 5.89543 20 7"
+                                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                        </svg>
+                    </div>
+                    <div class="newsletter-form-container">
+                        <h2>{{ t.subscribe_title }}</h2>
+                        <form class="subscribe-form" (submit)="$event.preventDefault()">
+                            <input type="email" [placeholder]="t.subscribe_placeholder" required>
+                            <button type="submit">
+                                {{ t.subscribe_btn }}
+                                <span class="dir-icon">
+                                    <svg *ngIf="currentLang === 'en'" width="16" height="16" viewBox="0 0 24 24"
+                                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                        stroke-linejoin="round">
+                                        <path d="M5 12h14M12 5l7 7-7 7" />
+                                    </svg>
+                                    <svg *ngIf="currentLang === 'ar'" width="16" height="16" viewBox="0 0 24 24"
+                                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                        stroke-linejoin="round">
+                                        <path d="M19 12H5M12 19l-7-7 7-7" />
+                                    </svg>
+                                </span>
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Main footer columns -->
+    <div class="footer-middle">
+        <div class="container">
+            <div class="footer-grid">
+                <!-- About Column -->
+                <div class="footer-col about-col">
+                    <h3 class="footer-title">{{ t.about_title }}</h3>
+                    <p class="footer-desc">{{ t.about_desc }}</p>
+                    <div class="since-text">{{ t.since_text }}</div>
+                </div>
+
+                <!-- Links Column -->
+                <div class="footer-col links-col">
+                    <h3 class="footer-title">{{ t.useful_links }}</h3>
+                    <div class="links-grid">
+                        <!-- First list of links -->
+                        <ul>
+                            <li><a href="javascript:void(0)">{{ t.link_about }}</a></li>
+                            <li><a href="javascript:void(0)">{{ t.link_careers }}</a></li>
+                            <li><a href="javascript:void(0)">{{ t.link_privacy }}</a></li>
+                            <li><a href="javascript:void(0)">{{ t.link_pricing }}</a></li>
+                            <li><a href="javascript:void(0)">{{ t.link_contact }}</a></li>
+                        </ul>
+                        <!-- Second list of links -->
+                        <ul>
+                            <li><a href="javascript:void(0)">{{ t.link_projects }}</a></li>
+                            <li><a href="javascript:void(0)">{{ t.link_blog }}</a></li>
+                            <li><a href="javascript:void(0)">{{ t.link_services }}</a></li>
+                            <li><a href="javascript:void(0)">{{ t.link_team }}</a></li>
+                            <li><a href="javascript:void(0)">{{ t.link_terms }}</a></li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Address Column -->
+                <div class="footer-col address-col">
+                    <h3 class="footer-title">{{ t.office_address }}</h3>
+                    <p class="address-text">{{ t.address_text }}</p>
+
+                    <h3 class="footer-title mt-4">{{ t.email_address }}</h3>
+                    <p class="email-text">{{ t.email_text }}</p>
+                    <a href="mailto:info@hydrometal.com" class="email-link">info@hydrometal.com</a>
+                </div>
+
+                <!-- Phone Column -->
+                <div class="footer-col phone-col">
+                    <h3 class="footer-title">{{ t.phone_number }}</h3>
+                    <a href="tel:+201070757303" class="phone-link">+201070757303</a>
+
+                    <h3 class="footer-title mt-4">{{ t.follow_us }}</h3>
+                    <div class="social-links">
+                        <a href="javascript:void(0)" class="social-icon">X</a>
+                        <a href="javascript:void(0)" class="social-icon">f</a>
+                        <a href="javascript:void(0)" class="social-icon">in</a>
+                        <a href="javascript:void(0)" class="social-icon">ig</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Copyright area -->
+    <div class="footer-bottom">
+        <div class="container">
+            <div class="copyright">{{ t.copyright }}</div>
+            <button class="scroll-top-btn" (click)="scrollToTop()" aria-label="Scroll to top">
+                ↑
+            </button>
+        </div>
+    </div>
+</footer>

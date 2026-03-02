@@ -1,0 +1,237 @@
+:host {
+  display: block;
+}
+
+/* Modern Chic Hero Section */
+.modern-hero {
+  position: relative;
+  background-color: var(--bg-main);
+  padding: 160px 0 0 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+  width: 100%;
+  transition: background-color 0.3s ease;
+
+  @media (max-width: 992px) {
+    padding: 110px 0 0 0;
+  }
+
+  /* Light mode grid pattern */
+  background-image: linear-gradient(rgba(0, 0, 0, 0.04) 1px, transparent 1px),
+  linear-gradient(90deg, rgba(0, 0, 0, 0.04) 1px, transparent 1px);
+  background-size: 60px 60px;
+
+  /* Dark mode grid pattern */
+  :host-context([data-theme="dark"]) & {
+    background-image:
+      linear-gradient(rgba(255, 255, 255, 0.04) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255, 255, 255, 0.04) 1px, transparent 1px);
+  }
+}
+
+.hero-container {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+}
+
+.hero-text-content {
+  text-align: center;
+  z-index: 2;
+  padding: 0 20px;
+}
+
+.hero-subtitle {
+  display: inline-block;
+  font-family: var(--font-heading);
+  color: var(--brand-gold-primary);
+  font-size: 0.9rem;
+  font-weight: 700;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  margin-bottom: 24px;
+}
+
+.hero-title {
+  font-family: var(--font-heading);
+  font-size: clamp(3.2rem, 6vw, 6.5rem);
+  font-weight: 900;
+  color: var(--text-primary);
+  line-height: 1.1;
+  margin: 0 0 24px 0;
+  transition: color 0.3s ease;
+
+  .gold-highlight {
+    color: var(--brand-gold-primary);
+    position: relative;
+
+    /* Subtle glow behind the gold text */
+    &::after {
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 130%;
+      height: 70%;
+      background: var(--brand-gold-primary);
+      filter: blur(45px);
+      opacity: 0.12;
+      z-index: -1;
+      border-radius: 50%;
+    }
+  }
+}
+
+.hero-description {
+  font-family: var(--font-body);
+  color: var(--text-secondary);
+  font-size: 1.15rem;
+  max-width: 650px;
+  margin: 10px auto;
+  line-height: 1.7;
+  transition: color 0.3s ease;
+}
+
+/* Circular explore button bridging text and image */
+.hero-floating-element {
+  position: relative;
+  margin-top: 50px;
+  margin-bottom: -60px;
+  /* Pull exactly half its height down to overlap the image */
+  z-index: 10;
+}
+
+.circular-btn-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  background-color: var(--bg-surface);
+  border: 1.5px solid rgba(189, 145, 80, 0.4);
+  text-decoration: none;
+  position: relative;
+  transition: all 0.4s ease;
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.08);
+
+  [data-theme="dark"] & {
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.5);
+  }
+
+  &:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 20px 40px rgba(189, 145, 80, 0.25);
+    border-color: var(--brand-gold-primary);
+    background-color: var(--bg-main);
+
+    .arrow-container {
+      color: var(--brand-gold-primary);
+      transform: scale(1.15);
+    }
+  }
+
+  .arrow-container {
+    position: absolute;
+    color: var(--text-primary);
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+    z-index: 2;
+  }
+
+  .circular-text {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    animation: rotateText 14s linear infinite;
+
+    svg {
+      width: 100%;
+      height: 100%;
+      overflow: visible;
+
+      text {
+        font-family: var(--font-heading);
+        font-size: 9.5px;
+        font-weight: 700;
+        letter-spacing: 4px;
+        fill: var(--text-primary);
+      }
+    }
+  }
+}
+
+@keyframes rotateText {
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* The Bottom Image with Huge Rounded Corners */
+.hero-image-wrapper {
+  width: 2950px;
+  max-width: 100%;
+  height: 63vh;
+  margin: 60px auto 0;
+  border-radius: 150px;
+  overflow: hidden;
+  position: relative;
+  box-shadow: 0 30px 60px rgba(0, 0, 0, 0.08);
+  background-color: var(--bg-surface);
+
+  [data-theme="dark"] & {
+    box-shadow: 0 30px 60px rgba(0, 0, 0, 0.6);
+  }
+
+  @media (max-width: 992px) {
+    height: 500px;
+    border-radius: 100px;
+    width: 100%;
+  }
+
+  @media (max-width: 576px) {
+    height: 400px;
+    border-radius: 60px;
+    width: 100%;
+  }
+
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center 45%;
+    animation: zoomInOutAnimation 15s ease-in-out infinite;
+
+    &:hover {
+      transform: scale(1.05);
+    }
+  }
+}
+
+@keyframes zoomInOutAnimation {
+  0% {
+    transform: scale(1);
+  }
+
+  50% {
+    transform: scale(1.08);
+    /* Adjust zoom level here */
+  }
+
+  100% {
+    transform: scale(1);
+  }
+}
